@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prog2_Proj3_beta_ChrisFrench0259182_260324;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -513,6 +514,9 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 MyEvents.CheckForAmbush();
 
             }
+
+            DrawShops();
+
             Console.SetCursorPosition(player._x, player._y);
             Console.ForegroundColor = player._fgColor;
             Console.BackgroundColor = player._bgColor;
@@ -520,6 +524,19 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             Console.ResetColor();
             Peon.MovePeonsRandomly();
         } 
+
+        //ben code
+        public static void DrawShops()
+        {
+            if(GameManager.map._currentMapIndex == 0)
+            {
+                Shop shop1 = new Shop("shopkeep", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow);
+                Console.SetCursorPosition(shop1._x, shop1._y);
+                Console.ForegroundColor = shop1._fgColor;
+                Console.BackgroundColor = shop1._bgColor;
+                Console.Write(shop1._symbol);
+            }
+        }
     }
 
 }

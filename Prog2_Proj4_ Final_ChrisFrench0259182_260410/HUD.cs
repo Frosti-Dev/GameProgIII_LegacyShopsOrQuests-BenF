@@ -233,6 +233,16 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             Console.ResetColor();
         }
 
+        public static void Shopkeep(string shopkeepName)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+            Console.SetCursorPosition(60, 4);
+            Console.WriteLine($"{GameManager.player._name} has found an shop!");
+            Console.SetCursorPosition(60, 5);
+            Console.WriteLine($"{shopkeepName} offers his wares...");
+        }
+
         public static void AnakinMustafar()
         {
             Console.ForegroundColor = ConsoleColor.Red;

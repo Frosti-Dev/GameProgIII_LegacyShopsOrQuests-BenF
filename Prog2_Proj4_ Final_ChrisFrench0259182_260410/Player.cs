@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -250,6 +251,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
 
             }
 
+            Debug.WriteLine(nextX + " " + nextY);
         }
 
     }

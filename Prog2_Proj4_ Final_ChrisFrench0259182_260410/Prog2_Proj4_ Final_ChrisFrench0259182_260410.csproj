@@ -64,6 +64,8 @@
     <Compile Include="CollectSpawner.cs" />
     <Compile Include="rectangle.cs" />
     <Compile Include="RecTrig.cs" />
+    <Compile Include="Shop.cs" />
+    <Compile Include="ShopItem.cs" />
     <Compile Include="Treasure.cs" />
     <Compile Include="ViewPort.cs" />
   </ItemGroup>
