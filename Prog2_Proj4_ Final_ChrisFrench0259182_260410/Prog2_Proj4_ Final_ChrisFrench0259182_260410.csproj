@@ -53,6 +53,7 @@
     <Compile Include="EnemyLeader.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="EnviroHeal.cs" />
+    <Compile Include="HealthPotion.cs" />
     <Compile Include="HUD.cs" />
     <Compile Include="LoadMap.cs" />
     <Compile Include="MyEvents.cs" />

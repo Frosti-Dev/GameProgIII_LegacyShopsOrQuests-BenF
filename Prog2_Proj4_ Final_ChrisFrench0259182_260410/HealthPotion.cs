@@ -7,20 +7,15 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 {
-    public class ShopItem
+    public class HealthPotion : ShopItem
     {
-        public string _itemName { get; set; }
-        public int _itemCost { get; set; }
-
-        protected ShopItem(string itemName, int itemCost)
+        public HealthPotion(string itemName, int itemCost) : base(itemName: "Health Potion", itemCost: 25)
         {
-            _itemName = itemName;
-            _itemCost = itemCost;
         }
 
-        public virtual void Effect()
+        public override void Effect()
         {
-
+            GameManager.player._health += 15;
         }
     }
 }

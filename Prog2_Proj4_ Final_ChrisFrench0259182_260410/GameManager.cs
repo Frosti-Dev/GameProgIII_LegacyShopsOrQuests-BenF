@@ -530,7 +530,9 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
         {
             if(GameManager.map._currentMapIndex == 0)
             {
-                Shop shop1 = new Shop("shopkeep", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow);
+                HealthPotion item1 = new HealthPotion("Health Potion", 25);
+
+                Shop shop1 = new Shop("shopkeep", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, item1, item1, item1 );
                 Console.SetCursorPosition(shop1._x, shop1._y);
                 Console.ForegroundColor = shop1._fgColor;
                 Console.BackgroundColor = shop1._bgColor;

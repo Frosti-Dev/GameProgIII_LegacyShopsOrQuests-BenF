@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.IO;
+using Prog2_Proj4_Final_ChrisFrench0259182_260410;
 
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
@@ -14,7 +15,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         //added ben code
 
 
-        public string _shopkeepName { get; set; }
+        public static string _shopkeepName { get; set; }
         public int _x { get; set; }
         public int _y { get; set; }
 
@@ -24,14 +25,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public ConsoleColor _bgColor { get; set; }
         public ConsoleColor _fgColor { get; set; }
 
-        public string _shopItem1;
+        public ShopItem _shopItem1;
         public int _item1Cost;
-        public string _shopItem2;
+        public ShopItem _shopItem2;
         public int _item2Cost;
-        public string _shopItem3;
+        public ShopItem _shopItem3;
         public int _item3Cost;
 
-        public Shop(string shopkeepName, int x, int y, char symbol, ConsoleColor fgColor, ConsoleColor bgColor, string shopItem1, string shopItem2, string shopItem3)
+        public Shop(string shopkeepName, int x, int y, char symbol, ConsoleColor fgColor, ConsoleColor bgColor, ShopItem shopItem1, ShopItem shopItem2, ShopItem shopItem3)
         {
             _x = x;
             _y = y;
@@ -73,13 +74,12 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             return "Mysterious Frosti";
         }
 
-        public static void SetCosts()
+        public static void OpenShop(Shop shop)
         {
-            List<string> items = new List<string>();
-
-            
+            if(GameManager.player._x == shop._x && GameManager.player._y == shop._y)
+            {
+                HUD.Shopkeep(_shopkeepName);
+            }
         }
-
-
     }
 }
