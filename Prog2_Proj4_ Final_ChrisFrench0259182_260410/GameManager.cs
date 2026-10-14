@@ -34,6 +34,8 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
         public static List<EnemyLeader> enemiesMap2 = new List<EnemyLeader>();
         public static List<EnemyLeader> enemiesMap3 = new List<EnemyLeader>();
         public static List<EnemyRider> enemyRiderList = new List<EnemyRider>();
+        public static List<Shop> shopList = new List<Shop>();
+        public static List<ShopItem> shoppingItems = new List<ShopItem>();
         public static LoadMap map = new LoadMap();
         public static Dictionary<int, List<(int x, int y)>> MapTreasureRegistry = new Dictionary<int, List<(int x, int y)>>();// dictionary set up to track treasure per map to prevent respawn when going back to map after leaving 
         public static Dictionary<int, List<Captive>> MapCaptiveRegistry = new Dictionary<int, List<Captive>> ();// dictionary set up to track Captives per map to prevent respawn when going back to map after leaving 
@@ -120,6 +122,14 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             enemiesMap3.Add(new EnemyLeader("Ogrelet", 37, 10, 20, 'Q', 90, ConsoleColor.Magenta, ConsoleColor.DarkGreen, (1, 55), (1, 24)));
             enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 180, ConsoleColor.DarkMagenta, ConsoleColor.Green, (1, 55), (1, 24)));
 
+            shoppingItems.Clear();
+            shoppingItems.Add(new HealthPotion("Health Potion", 25));
+            shoppingItems.Add(new StrengthPotion("Strength Potion", 35));
+            shoppingItems.Add(new PrisonerKey("Prisoner Key", 50));
+            
+            shopList.Clear();
+            shopList.Add(new Shop("shopkeep1", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[0], shoppingItems[1], shoppingItems[2]));
+
             while (isPlaying)
             {
                 //viewport.CheckConsoleSize();
@@ -176,6 +186,8 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 Captive.CheckCapCollection();
                 PowerOrb.CheckOrbCollection();
                 Peon.CheckPeonCollection();
+                Shop.CheckOpenShop(shopList[map._currentMapIndex]);
+                
 
 //loop through Peons
 // if player pos = peon pos (X AND Y)
@@ -527,17 +539,13 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
 
         //ben code
         public static void DrawShops()
-        {
-            if(GameManager.map._currentMapIndex == 0)
-            {
-                HealthPotion item1 = new HealthPotion("Health Potion", 25);
-
-                Shop shop1 = new Shop("shopkeep", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, item1, item1, item1 );
-                Console.SetCursorPosition(shop1._x, shop1._y);
-                Console.ForegroundColor = shop1._fgColor;
-                Console.BackgroundColor = shop1._bgColor;
-                Console.Write(shop1._symbol);
-            }
+        { 
+             Shop shop = shopList[map._currentMapIndex];
+             Console.SetCursorPosition(shop._x, shop._y);
+             Console.ForegroundColor = shop._fgColor;
+             Console.BackgroundColor = shop._bgColor;
+             Console.Write(shop._symbol);
+            
         }
     }
 

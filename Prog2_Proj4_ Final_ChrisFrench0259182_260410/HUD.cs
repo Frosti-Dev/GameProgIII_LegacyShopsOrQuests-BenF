@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prog2_Proj3_beta_ChrisFrench0259182_260324;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -233,14 +234,21 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             Console.ResetColor();
         }
 
-        public static void Shopkeep(string shopkeepName)
+        public static void Shopkeep(string shopkeepName, Shop shop)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
             Console.SetCursorPosition(60, 4);
             Console.WriteLine($"{GameManager.player._name} has found an shop!");
             Console.SetCursorPosition(60, 5);
-            Console.WriteLine($"{shopkeepName} offers his wares...");
+            Console.WriteLine($"{shopkeepName} offers their wares...");
+            Console.SetCursorPosition(60, 6);
+            Console.WriteLine($"Press '1' for {shop._item1Name}: Costs {shop._item1Cost}");
+            Console.SetCursorPosition(60, 7);
+            Console.WriteLine($"Press '2' for {shop._item2Name}: Costs {shop._item2Cost}");
+            Console.SetCursorPosition(60, 8);
+            Console.WriteLine($"Press '3' for {shop._item3Name}: Costs {shop._item3Cost}");
+
         }
 
         public static void AnakinMustafar()

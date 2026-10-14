@@ -15,6 +15,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public override void Effect()
         {
+            Treasure._gold -= _itemCost;
             GameManager.player._health += 15;
         }
     }

@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adjustor.cs" />
+    <Compile Include="PrisonerKey.cs" />
+    <Compile Include="StrengthPotion.cs" />
     <Compile Include="Buffs.cs" />
     <Compile Include="Captive.cs" />
     <Compile Include="Character.cs" />

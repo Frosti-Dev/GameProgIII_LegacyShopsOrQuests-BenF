@@ -26,10 +26,13 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         public ConsoleColor _fgColor { get; set; }
 
         public ShopItem _shopItem1;
+        public string _item1Name;
         public int _item1Cost;
         public ShopItem _shopItem2;
+        public string _item2Name;
         public int _item2Cost;
         public ShopItem _shopItem3;
+        public string _item3Name;
         public int _item3Cost;
 
         public Shop(string shopkeepName, int x, int y, char symbol, ConsoleColor fgColor, ConsoleColor bgColor, ShopItem shopItem1, ShopItem shopItem2, ShopItem shopItem3)
@@ -43,9 +46,18 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             shopkeepName = GetRandomNameFromFile();
             _shopkeepName = shopkeepName;
 
+            _item1Name = shopItem1._itemName;
+            _item2Name = shopItem2._itemName;
+            _item3Name = shopItem3._itemName;
+
             _shopItem1 = shopItem1;
             _shopItem2 = shopItem2;
             _shopItem3 = shopItem3;
+
+            _item1Cost = shopItem1._itemCost;
+            _item2Cost = shopItem2._itemCost;
+            _item3Cost = shopItem3._itemCost;
+
         }
 
         public static string GetRandomNameFromFile()
@@ -74,11 +86,11 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             return "Mysterious Frosti";
         }
 
-        public static void OpenShop(Shop shop)
+        public static void CheckOpenShop(Shop shop)
         {
             if(GameManager.player._x == shop._x && GameManager.player._y == shop._y)
             {
-                HUD.Shopkeep(_shopkeepName);
+                HUD.Shopkeep(_shopkeepName, shop);
             }
         }
     }
