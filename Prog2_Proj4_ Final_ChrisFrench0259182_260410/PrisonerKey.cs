@@ -15,12 +15,17 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public override void Effect()
         {
-            if(_itemCost < Treasure._gold)
+            if(_itemCost <= Treasure._gold)
             {
                 Treasure._gold -= _itemCost;
                 Captive._freed += 50;
             }
-            
+
+            else
+            {
+                HUD.BrokeBoy();
+            }
+
         }
     }
 }

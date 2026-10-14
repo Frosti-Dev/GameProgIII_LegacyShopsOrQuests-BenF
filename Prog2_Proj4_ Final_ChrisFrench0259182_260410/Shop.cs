@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.IO;
 using Prog2_Proj4_Final_ChrisFrench0259182_260410;
+using System.Diagnostics.Contracts;
 
 
 namespace prog2_Proj3_beta_ChrisFrench0259182_260324
@@ -90,7 +91,37 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
             if(GameManager.player._x == shop._x && GameManager.player._y == shop._y)
             {
+                GameManager.isShopping = true;
                 HUD.Shopkeep(_shopkeepName, shop);
+            }
+
+            else
+            {
+                GameManager.isShopping = false;
+            }
+        }
+
+        public static void CheckBuy(Shop shop, int buyID)
+        {
+            if (GameManager.isShopping)
+            {
+                if(buyID == 1)
+                {
+                    shop._shopItem1.Effect();
+                    HUD.MoneySpent(shop, buyID);
+                }
+                if (buyID == 2)
+                {
+                    shop._shopItem2.Effect();
+                    HUD.MoneySpent(shop, buyID);
+                }
+                if (buyID == 3)
+                {
+                    shop._shopItem3.Effect();
+                    HUD.MoneySpent(shop, buyID);
+
+                    //FIX HUD POPPING UP TOO EARLY!!!!!!!!!
+                }
             }
         }
     }

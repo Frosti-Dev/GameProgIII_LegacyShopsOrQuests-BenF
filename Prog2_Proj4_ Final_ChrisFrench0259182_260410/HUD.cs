@@ -251,6 +251,46 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
 
         }
 
+        public static void MoneySpent(Shop shop, int buyID)
+        {
+            if (GameManager.isShopping)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.SetCursorPosition(60, 12);
+                if (buyID == 1)
+                {
+                    Console.WriteLine($"You have bought a {shop._item1Name}");
+                }
+                if (buyID == 2)
+                {
+                    Console.WriteLine($"You have bought a {shop._item2Name}");
+                }
+                if (buyID == 3)
+                {
+                    Console.WriteLine($"You have bought a {shop._item3Name}");
+                }
+
+                Console.SetCursorPosition(60, 13);
+                Console.WriteLine($"You have {Treasure._gold} gold remaining");
+            }
+        }
+
+        public static void BrokeBoy()
+        {
+            if (GameManager.isShopping)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.SetCursorPosition(60, 12);
+                Console.WriteLine("You do not have enough gold to make this purchase...");
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(60, 13);
+                Console.WriteLine($"You only have {Treasure._gold} gold remaining");
+            }
+        }
+
         public static void AnakinMustafar()
         {
             Console.ForegroundColor = ConsoleColor.Red;

@@ -15,7 +15,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
 
     /// <summary>
  /// remove all statics when rewriting the code this summer. 
- /// not enough time to get thaqt sorted currently with the other assignments due at same timeframe as this one.
+ /// not enough time to get that sorted currently with the other assignments due at same timeframe as this one.
     /// </summary>
 
 
@@ -43,6 +43,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
         public static Dictionary<int, List<Peon>> MapPeonRegistry = new Dictionary<int, List<Peon>>();
         public static bool isPlaying = true;
         public static bool isAlly = false; //sets bool to check for other allies in movement path
+        public static bool isShopping = false;
       
 
 
@@ -57,7 +58,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             // Check if player  is there
             if (x == GameManager.player._x && y == GameManager.player._y)
             { return true; }
-            // check for enemmies
+            // check for enemies
             if (GameManager.enemiesMap1.Any(enmy => enmy._x == x && enmy._y == y))
             { return true; }
             if (GameManager.enemiesMap2.Any(enmy => enmy._x == x && enmy._y == y))
@@ -128,7 +129,8 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             shoppingItems.Add(new PrisonerKey("Prisoner Key", 50));
             
             shopList.Clear();
-            shopList.Add(new Shop("shopkeep1", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[0], shoppingItems[1], shoppingItems[2]));
+            shopList.Add(new Shop("Shopkeep1", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[0], shoppingItems[1], shoppingItems[2]));
+            shopList.Add(new Shop("Shopkeep2", 20, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[0], shoppingItems[1], shoppingItems[2]));
 
             while (isPlaying)
             {
@@ -167,6 +169,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 player._attack = plaAtkUP;
 
                 int plX = 0, plY = 0;
+                int buyID = 0;
                 ConsoleKey input = Console.ReadKey(true).Key;
                 // move player with W,A,S,D or optional arrow keys 
                 if (input == ConsoleKey.LeftArrow) plX = -1;
@@ -178,8 +181,13 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 if (input == ConsoleKey.DownArrow) plY = 1;
                 if (input == ConsoleKey.S) plY = 1;
 
+                //for shopping
+                if (input == ConsoleKey.D1) buyID = 1;
+                if (input == ConsoleKey.D2) buyID = 2;
+                if (input == ConsoleKey.D3) buyID = 3;
+
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
-               // if (input == ConsoleKey.R) Restart();return;//Restarts the game
+               // if (input == ConsoleKey.R) Restart();return; //Restarts the game
                 HUD.ClearMessage();
                 player.Move(plX, plY);
                 Treasure.CheckTreasureCollection();
@@ -187,6 +195,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 PowerOrb.CheckOrbCollection();
                 Peon.CheckPeonCollection();
                 Shop.CheckOpenShop(shopList[map._currentMapIndex]);
+                Shop.CheckBuy(shopList[map._currentMapIndex], buyID);
                 
 
 //loop through Peons

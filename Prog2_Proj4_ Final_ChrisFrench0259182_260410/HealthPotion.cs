@@ -15,8 +15,21 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public override void Effect()
         {
-            Treasure._gold -= _itemCost;
-            GameManager.player._health += 15;
+            if (_itemCost <= Treasure._gold)
+            {
+                Treasure._gold -= _itemCost;
+                GameManager.player._health += 15;
+
+                if (GameManager.player._health > GameManager.plaMaxHP)
+                {
+                    GameManager.player._health = GameManager.plaMaxHP;
+                }
+            }
+
+            else
+            {
+                HUD.BrokeBoy();
+            }
         }
     }
 }

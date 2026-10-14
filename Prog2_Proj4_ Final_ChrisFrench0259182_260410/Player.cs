@@ -251,7 +251,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
 
             }
 
-            Debug.WriteLine(nextX + " " + nextY);
+            //Debug.WriteLine($"PlayerX: {_x}  PlayerY: {_y}");
         }
 
     }

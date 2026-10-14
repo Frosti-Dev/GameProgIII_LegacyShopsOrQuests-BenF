@@ -15,8 +15,17 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
 
         public override void Effect()
         {
-            Treasure._gold -= _itemCost;
-            GameManager.player._attack += 15;
+            if (_itemCost <= Treasure._gold)
+            {
+                Treasure._gold -= _itemCost;
+                GameManager.player._attack += 15;
+                
+            }
+
+            else
+            {
+                HUD.BrokeBoy();
+            }
         }
     }
 }
