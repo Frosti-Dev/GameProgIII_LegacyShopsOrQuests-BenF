@@ -124,13 +124,18 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             enemiesMap3.Add(new EnemyLeader("Boss Drowkus", 48, 23, 25, 'D', 180, ConsoleColor.DarkMagenta, ConsoleColor.Green, (1, 55), (1, 24)));
 
             shoppingItems.Clear();
-            shoppingItems.Add(new HealthPotion("Health Potion", 25));
-            shoppingItems.Add(new StrengthPotion("Strength Potion", 35));
+            shoppingItems.Add(new HealthPotion("Health Potion", 25, 15));
+            shoppingItems.Add(new StrengthPotion("Strength Potion", 35, 25));
             shoppingItems.Add(new PrisonerKey("Prisoner Key", 50));
+            shoppingItems.Add(new HealthPotion("Great Health Potion", 50, 30));
+            shoppingItems.Add(new StrengthPotion("Great Strength Potion", 60, 50));
+            shoppingItems.Add(new HealthPotion("Greater Health Potion", 70, 50));
+            shoppingItems.Add(new StrengthPotion("Greater Strength Potion", 80, 60));
             
             shopList.Clear();
             shopList.Add(new Shop("Shopkeep1", 54, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[0], shoppingItems[1], shoppingItems[2]));
-            shopList.Add(new Shop("Shopkeep2", 20, 3, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[0], shoppingItems[1], shoppingItems[2]));
+            shopList.Add(new Shop("Shopkeep2", 34, 8, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[3], shoppingItems[4], shoppingItems[2]));
+            shopList.Add(new Shop("Shopkeep3", 34, 8, '$', ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, shoppingItems[3], shoppingItems[4], shoppingItems[2]));
 
             while (isPlaying)
             {

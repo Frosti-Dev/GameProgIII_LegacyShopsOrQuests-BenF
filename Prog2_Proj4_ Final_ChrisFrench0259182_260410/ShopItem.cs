@@ -18,7 +18,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             _itemCost = itemCost;
         }
 
-        public virtual void Effect()
+        public virtual void Effect(Shop shop, int buyID)
         {
 
         }

@@ -13,12 +13,14 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
         {
         }
 
-        public override void Effect()
+        public override void Effect(Shop shop, int buyID)
         {
             if(_itemCost <= Treasure._gold)
             {
                 Treasure._gold -= _itemCost;
                 Captive._freed += 50;
+
+                HUD.MoneySpent(shop, buyID);
             }
 
             else

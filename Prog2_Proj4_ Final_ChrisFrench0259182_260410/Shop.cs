@@ -107,20 +107,15 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             {
                 if(buyID == 1)
                 {
-                    shop._shopItem1.Effect();
-                    HUD.MoneySpent(shop, buyID);
+                    shop._shopItem1.Effect(shop, buyID);
                 }
                 if (buyID == 2)
                 {
-                    shop._shopItem2.Effect();
-                    HUD.MoneySpent(shop, buyID);
+                    shop._shopItem2.Effect(shop, buyID);
                 }
                 if (buyID == 3)
                 {
-                    shop._shopItem3.Effect();
-                    HUD.MoneySpent(shop, buyID);
-
-                    //FIX HUD POPPING UP TOO EARLY!!!!!!!!!
+                    shop._shopItem3.Effect(shop, buyID);
                 }
             }
         }
