@@ -23,7 +23,7 @@ namespace prog2_Proj3_beta_ChrisFrench0259182_260324
             if (_itemCost <= Treasure._gold)
             {
                 Treasure._gold -= _itemCost;
-                GameManager.player._attack += _itemStrength;
+                GameManager.plaAtkUP += _itemStrength;
 
                 HUD.MoneySpent(shop, buyID);
             }
