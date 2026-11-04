@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
+using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -44,7 +47,37 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
         public static bool isPlaying = true;
         public static bool isAlly = false; //sets bool to check for other allies in movement path
         public static bool isShopping = false;
+        public static bool isOldFile;
       
+
+        public static void SaveData()
+        {
+            GameSettings gameSettings = new GameSettings();
+
+            gameSettings.playerName = player._name;
+            gameSettings.playerLevel = Player.plLevel;
+            gameSettings.playerXP = Player.plXP;
+            gameSettings.playerATK = player._attack;
+            gameSettings.captivesFreed = Captive._freed;
+
+            string jsonString = JsonSerializer.Serialize(gameSettings);
+
+            System.IO.File.WriteAllText("settings.json", jsonString);
+
+        }
+
+        public static void LoadData()
+        {
+            string jsonString = File.ReadAllText("settings.json");
+
+            var gameSettings = JsonSerializer.Deserialize<GameSettings>(jsonString);
+
+            player._name = gameSettings.playerName;
+            Player.plLevel = gameSettings.playerLevel;
+            Player.plXP = gameSettings.playerXP;
+            player._attack = gameSettings.playerATK;
+            Captive._freed = gameSettings.captivesFreed;
+        }
 
 
         public static bool IsTileOccupied(int x, int y)
@@ -192,6 +225,9 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 if (input == ConsoleKey.D1) buyID = 1;
                 if (input == ConsoleKey.D2) buyID = 2;
                 if (input == ConsoleKey.D3) buyID = 3;
+
+                //for saving
+                if (input == ConsoleKey.P) SaveData();
 
                 if (input == ConsoleKey.Q) isPlaying = false; //Quit the 'is playing' loop
                // if (input == ConsoleKey.R) Restart();return; //Restarts the game

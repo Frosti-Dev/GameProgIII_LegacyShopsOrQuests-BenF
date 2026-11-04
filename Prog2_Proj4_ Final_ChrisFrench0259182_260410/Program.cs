@@ -17,6 +17,18 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Do you wish to reload any available player save?");
+            Console.WriteLine("'Y' for Yes");
+            Console.WriteLine("'N' for No");
+
+            ConsoleKey input = Console.ReadKey(true).Key;
+            if (input == ConsoleKey.Y)
+            {
+                GameManager.LoadData();
+                GameManager.isOldFile = true;
+            }
+            else GameManager.isOldFile = false;
+
 
             bool replay = false;
             try
