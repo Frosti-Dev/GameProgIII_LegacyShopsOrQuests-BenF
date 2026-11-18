@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -17,24 +18,41 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Do you wish to reload any available player save?");
+            Console.BackgroundColor = ConsoleColor.Black;
+
+            Console.WriteLine("Do you wish to reload any available character data save?");
             Console.WriteLine("'Y' for Yes");
             Console.WriteLine("'N' for No");
-
             ConsoleKey input = Console.ReadKey(true).Key;
+            Console.Clear();
+
             if (input == ConsoleKey.Y)
             {
+                try
+                {
+                    GameManager.LoadData();
+                    GameManager.isOldFile = true;
+                }
+
+                catch (FileNotFoundException)
+                {
+                    Console.Clear();
+
+                    Console.WriteLine("CRITICAL ERROR: NO SAVE FOUND!");
+                }
+
                 GameManager.LoadData();
                 GameManager.isOldFile = true;
             }
-            else GameManager.isOldFile = false;
-
+            else if (input == ConsoleKey.N) GameManager.isOldFile = false;
 
             bool replay = false;
+
             try
             {
-                GameManager.StartGame();
+                GameManager.StartGame();   
             }
+
             catch (ArgumentOutOfRangeException)
             {
                 Console.Clear();
@@ -43,6 +61,13 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 Console.WriteLine("Please maximize your window and press 'R' to restart."); //pause and waitts for player resize and press r
 
             }
+
+            if (input == ConsoleKey.Y)
+            {
+                GameManager.LoadData();
+                GameManager.isOldFile = true;
+            }
+            else GameManager.isOldFile = false;
 
             GameManager.StartGame();
 
@@ -64,15 +89,15 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 Console.Clear();
                 GameManager.StartGame();
 
-                ConsoleKey input = Console.ReadKey(true).Key;
-                if (input == ConsoleKey.R)
+                ConsoleKey inputR = Console.ReadKey(true).Key;
+                if (inputR == ConsoleKey.R)
                 {
                     GameManager.isPlaying = true;
                     replay = true;
                     GameManager.Restart();
                     return;
                 }
-                if (input != ConsoleKey.R)
+                if (inputR != ConsoleKey.R)
                 {
                     replay = false;
                 }

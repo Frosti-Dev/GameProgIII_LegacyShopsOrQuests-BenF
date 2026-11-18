@@ -125,7 +125,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
         {
             Console.SetCursorPosition(0, 26);
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Press any Key to start... Use W,A,S,D  or arrow keys to move around the map...Press 'S' to Save...Press 'Q' to exit, " +
+            Console.WriteLine("Press any Key to start... Use W,A,S,D  or arrow keys to move around the map...Press 'P' to Save...Press 'Q' to exit, " +
                 "Fight enemies by manouvering to them or try to avoid them... Get to your castle [XXX].\n");
             Console.ResetColor();
         }
@@ -215,8 +215,14 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
 
             Console.ResetColor();
 
+        }
 
-
+        public static void SavedGame()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.SetCursorPosition(60, 5);
+            Console.WriteLine("Game Saved!");
+            Console.ResetColor();
         }
 
         public static void Moses(string Heston)

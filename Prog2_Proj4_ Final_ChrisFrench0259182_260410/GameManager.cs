@@ -57,12 +57,16 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
             gameSettings.playerName = player._name;
             gameSettings.playerLevel = Player.plLevel;
             gameSettings.playerXP = Player.plXP;
+            gameSettings.playerHP = player._health;
             gameSettings.playerATK = player._attack;
             gameSettings.captivesFreed = Captive._freed;
+            gameSettings.gold = Treasure._gold;
 
             string jsonString = JsonSerializer.Serialize(gameSettings);
 
             System.IO.File.WriteAllText("settings.json", jsonString);
+
+            HUD.SavedGame();
 
         }
 
@@ -72,11 +76,14 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
 
             var gameSettings = JsonSerializer.Deserialize<GameSettings>(jsonString);
 
-            player._name = gameSettings.playerName;
+            Name = gameSettings.playerName;
             Player.plLevel = gameSettings.playerLevel;
             Player.plXP = gameSettings.playerXP;
-            player._attack = gameSettings.playerATK;
+            plaMaxHP = gameSettings.playerHP;
+            player._health = plaMaxHP;
+            plaAtkUP = gameSettings.playerATK;
             Captive._freed = gameSettings.captivesFreed;
+            Treasure._gold = gameSettings.gold;
         }
 
 
@@ -130,7 +137,15 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
         public static void StartGame()
         {
             Console.SetCursorPosition(0, 0);
-            HUD.alias();
+
+            if (isOldFile)
+            {
+                Console.WriteLine("File Loaded");
+                Console.ReadKey();
+            }
+
+            else HUD.alias();
+
             Console.Clear();
             Console.CursorVisible = false;
 
@@ -207,6 +222,7 @@ namespace Prog2_Proj4_Final_ChrisFrench0259182_260410
                 HUD.Instructions();
                 player._name = Name;
                 player._attack = plaAtkUP;
+                //player._health = plaMaxHP;
 
                 int plX = 0, plY = 0;
                 int buyID = 0;
